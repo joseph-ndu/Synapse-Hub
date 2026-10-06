@@ -1,0 +1,203 @@
+#sidebar {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: flex-start;
+   background-color: var(--surface);
+   padding: calc(var(--navGap) * 2) calc(var(--navGap) * 1.5);
+   gap: calc(var(--navGap) * 2);
+   width: 100%;
+   z-index: 10;
+   overflow-y: auto;
+}
+
+#sidebarMain {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: flex-start;
+   gap: var(--navGap);
+   width: 100%;
+}
+
+#appIcon {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+}
+
+:is(#desktop_sidebarController, #sidebarCloser) {
+   background-color: var(--surface);
+}
+
+:is(#desktop_sidebarController, #sidebarCloser):hover {
+   filter: brightness(1.2);
+}
+
+:is(#desktop_sidebarController, #sidebarCloser):active {
+   filter: brightness(1.5);
+}
+
+#sidebarCloser {
+   display: none;
+}
+
+#sidebar label {
+   width: 100%;
+}
+
+#selectProject_parent {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   gap: var(--navGap);
+   width: 100%;
+   margin-bottom: calc(var(--navGap) * 2);
+}
+
+:is(#selectProject, #newProject) {
+   display: block;
+   background-color: var(--surface);
+   font-family: var(--textFont);
+   font-size: var(--fontSize4);
+   color: var(--text);
+   padding: calc(var(--navGap) / 3) var(--navGap);
+   width: 100%;
+   border: var(--border_wdth) solid var(--text);
+   border-radius: var(--border_radius);
+}
+
+#selectProject:hover {
+   filter: brightness(1.2);
+}
+
+#selectProject:active {
+   filter: brightness(1.5);
+}
+
+[for="newProject"] {
+   display: none;
+}
+
+#newProject::placeholder {
+   text-align: center;
+   font-size: calc(var(--fontSize4) / 1.25);
+}
+
+#newProject:active {
+   border-color: var(--secondary) !important;
+}
+
+#projectIcons {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   gap: calc(var(--navGap) / 2);
+}
+
+:is(#addProject, #deleteProject) {
+   background-color: var(--text);
+   border-color: var(--text);
+}
+
+:is(#addProject, #deleteProject) svg {
+   border-radius: calc(var(--border_radius) / 4);
+   background-color: var(--surface);
+}
+
+:is(#addProject, #deleteProject):hover {
+   filter: brightness(1.2);
+}
+
+:is(#addProject, #deleteProject):active {
+   filter: brightness(1.5);
+}
+
+:is(#allTask, #activeTask, #completedTask, #sidebar_arrangement label) {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   background-color: var(--surface);
+   width: 100%;
+   min-width: 4rem;
+   padding: calc(var(--navGap) / 3) var(--navGap);
+}
+
+:is(#allTask, #activeTask, #completedTask):hover {
+   filter: brightness(1.2);
+}
+
+:is(#allTask, #activeTask, #completedTask):active {
+   filter: brightness(1.5);
+}
+
+:is(#allTaskNum, #activeTaskNum, #completedTaskNum) {
+   font-size: var(--fontSize5);
+   display: block;
+   text-align: center;
+   background-color: var(--mutedText);
+   padding: calc(var(--navGap) / 12) calc(var(--navGap) / 4);
+   border-radius: 100%;
+}
+
+[for="sidebar_sort"] {
+   display: none;
+   flex-direction: row;
+   align-items: center;
+   justify-content: flex-start;
+   background-color: var(--surface);
+   width: 100%;
+   gap: calc(var(--navGap) / 2);
+   margin-top: var(--navGap);
+   padding: calc(var(--navGap) / 3) 0;
+}
+
+#sidebar_sort {
+   font-family: var(--textFont);
+   font-size: var(--fontSize5);
+   color: var(--text);
+   background-color: var(--surface);
+   border: var(--border_wdth) solid var(--mutedText);
+}
+
+#sidebar_sort:hover {
+   filter: brightness(1.2);
+}
+
+#sidebar_sort:active {
+   filter: brightness(1.5);
+}
+
+@media (max-width: 768px) {
+   #sidebar {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: var(--sidebar-width);
+      padding: calc(var(--navGap) * 2);
+      gap: calc(var(--navGap) * 2);
+   }
+
+   #appIcon {
+      margin: var(--navGap) 0 calc(var(--navGap) * 2) 0;
+   }
+
+   #desktop_sidebarController {
+      display: none;
+   }
+
+   #sidebarCloser {
+      display: block;
+   }
+
+   [for="sidebar_sort"] {
+      display: flex;
+   }
+}

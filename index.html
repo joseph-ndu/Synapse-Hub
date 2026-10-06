@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Synapse Hub</title>
+   <link rel="icon" type="image/png" href="img/icon.png">
+   <meta name="description" content="A modern B2B Task Management Hub">
+   <link rel="stylesheet" href="css/base.css">
+   <link rel="stylesheet" href="css/sidebar.css">
+   <link rel="stylesheet" href="css/main.css">
+   <script src="js/variable.js" defer></script>
+   <script src="js/ui_II.js" defer></script>
+   <script src="js/app.js" defer></script>
+   <script src="js/ui.js" defer></script>
+   <script src="js/project.js" defer></script>
+   <script src="js/task.js" defer></script>
+</head>
+
+<body>
+   <section id="sidebar">
+      <div id="appIcon">
+         <svg id="logo" xmlns="http://www.w3.org/2000/svg" height="30px" width="30px" viewBox="0 0 16 16" id="cluster">
+            <path fill="var(--secondary)"
+               d="M14 12a1.993 1.993 0 0 0-1.008.305L10.78 10.15a3.439 3.439 0 0 0 .74-1.993L13.09 8a1.49 1.49 0 1 0-.089-.768l-1.591.128a3.512 3.512 0 0 0-1.978-2.521L9.74 4H10a2 2 0 1 0-1.01-.265l-.27.855a3.31 3.31 0 0 0-.754-.084c-.83 0-1.59.296-2.181.789L2.791 2.291a1.5 1.5 0 1 0-1.291.71c.281-.001.544-.079.767-.214L5.26 5.791a3.446 3.446 0 0 0-.76 2.168v.203l-.66.11a2 2 0 1 0 .161.786L4 8.999l.63-.097a3.522 3.522 0 0 0 1.466 1.992l-.556 1.188a1.947 1.947 0 0 0-.539-.08h-.017a2 2 0 1 0 1.231.423l.566-1.153c.364.146.787.231 1.229.231.847 0 1.621-.311 2.216-.824l2.176 2.124a2 2 0 1 0 1.6-.8zm-9 3a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm3-4.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+         </svg>
+         <svg id="desktop_sidebarController" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+            width="24px" fill="var(--text)">
+            <path
+               d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm280-80h280v-560H480v560Z" />
+         </svg>
+         <svg id="sidebarCloser" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"
+            fill="var(--text)">
+            <path
+               d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+         </svg>
+      </div>
+      <div id="sidebarMain">
+         <form method="post" id="selectProject_parent">
+            <label for="selectProject">
+               <select name="selectProject" id="selectProject">
+                  <option value="p_012345" selected>General</option>
+               </select>
+            </label>
+            <label for="newProject">
+               <input type="text" name="newProject" id="newProject" minlength="3" maxlength="20"
+                  placeholder="New Project.." disabled>
+            </label>
+            <section id="projectIcons">
+               <button type="submit" id="addProject">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                     fill="var(--text)">
+                     <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+                  </svg>
+               </button>
+               <button type="button" id="deleteProject">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                     fill="var(--accentUrgent)">
+                     <path
+                        d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+                  </svg>
+               </button>
+            </section>
+         </form>
+         <div id="allTask" tabindex="0.5">
+            <p>All Tasks</p>
+            <p id="allTaskNum">0</p>
+         </div>
+         <div id="activeTask" tabindex="0.5">
+            <p>Active</p>
+            <p id="activeTaskNum">0</p>
+         </div>
+         <div id="completedTask" tabindex="0.5">
+            <p>Completed</p>
+            <p id="completedTaskNum">0</p>
+         </div>
+         <label for="sidebar_sort">Sort by:
+            <select name="sidebar_sort" id="sidebar_sort">
+               <option value="priority">Priority</option>
+               <option value="date" selected>Date Modified <span class="default">(Default)</span></option>
+               <option value="taskDate">Task Date</option>
+            </select>
+         </label>
+      </div>
+   </section>
+   <section id="main">
+      <header id="mainHeader">
+         <header>
+            <svg id="sidebarOpener" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960"
+               width="20px" fill="var(--text)">
+               <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+            </svg>
+            <h1>Synapse Hub</h1>
+         </header>
+         <main>
+            <h2 id="task_projectName"></h2>
+            <div id="arrangement">
+               <label for="sort">Sort by:
+                  <select name="sort" id="sort">
+                     <option value="priority">Priority</option>
+                     <option value="date" selected>Date Modified <span class="default">(Default)</span></option>
+                     <option value="taskDate">Task Date</option>
+                  </select>
+               </label>
+            </div>
+            <button type="button" class="displayBtn" onclick="display_tc()">
+               <span class="displayBtn_svg">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                     fill="var(--background)">
+                     <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+                  </svg>
+               </span> New task
+            </button>
+            <div id="checkedOpt">
+               <p class="checkedOpt_p" onclick="del_task(task)">
+                  <svg id="delTask" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960"
+                     width="28px" fill="var(--accentUrgent)">
+                     <path xmlns="http://www.w3.org/2000/svg"
+                        d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+                  </svg>
+                  <span>Delete Selected</span>
+               </p>
+               <div class="close">
+                  <p id="checkedCount">0</p>
+                  <svg id="closeOpt" onclick="remove_checkedOpt()" xmlns="http://www.w3.org/2000/svg" height="30px"
+                     viewBox="0 -960 960 960" width="30px" fill="var(--text)">
+                     <path
+                        d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                  </svg>
+               </div>
+            </div>
+         </main>
+      </header>
+      <main id="taskContent">
+         <div id="exit_taskCreator"></div>
+         <form id="taskCreator" method="post">
+            <label for="taskInp">
+               <input type="text" name="taskInp" id="taskInp" placeholder="Task title..." required>
+            </label>
+            <label for="setDate">
+               <input type="datetime-local" name="setDate" id="setDate" required>
+            </label>
+            <label for="setPriority">
+               <select name="setPriority" id="setPriority" required>
+                  <option value disabled selected hidden>Priority</option>
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+               </select>
+            </label>
+            <button type="submit" id="create">
+               <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                  fill="var(--text)">
+                  <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+               </svg>
+            </button>
+         </form>
+         <section id="activeTaskList">
+            <header>
+               <h2>Active Task List</h2>
+               <button id="dispCheckboxes" type="button">Select</button>
+            </header>
+            <div class="taskContent" id="active_taskContent">
+               <figure class="active_empty">
+                  <img src="img/empty-folder.png" draggable="false" alt="empty"
+                     srcset="img/empty-folder-small.png 64w, img/empty-folder-medium.png, img/empty-folder-large.png">
+                  <figcaption>No task found in 'Active'</figcaption>
+                  <button type="button" class="displayBtn" onclick="display_tc()">
+                     <span class="displayBtn_svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                           fill="var(--background)">
+                           <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+                        </svg>
+                     </span> Create task
+                  </button>
+               </figure>
+            </div>
+         </section>
+         <section id="completedTaskList">
+            <h2>Completed Task List</h2>
+            <div class="taskContent" id="completed_taskContent">
+               <figure class="completed_empty">
+                  <img src="img/empty-folder.png" draggable="false" alt="empty"
+                     srcset="img/empty-folder-small.png 64w, img/empty-folder-medium.png, img/empty-folder-large.png">
+                  <figcaption>No task found in 'Completed'</figcaption>
+               </figure>
+            </div>
+         </section>
+      </main>
+   </section>
+</body>
+
+</html>
