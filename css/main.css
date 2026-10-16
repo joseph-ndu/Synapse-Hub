@@ -159,6 +159,8 @@ main {
 
 :is(#taskCreator, #task_editor) {
    position: absolute;
+   justify-self: center;
+   -webkit-justify-self: center;
    display: none;
    flex-direction: column;
    justify-content: space-between;
@@ -168,9 +170,7 @@ main {
    background-color: var(--primary);
    box-shadow: 0 4px 6px -1px var(--primary);
    width: var(--taskCreator_width);
-   margin: auto;
-   margin-right: auto;
-   margin-left: auto;
+   margin: var(--navGap) 0;
    padding: var(--navGap);
    gap: var(--navGap);
    z-index: 10;
