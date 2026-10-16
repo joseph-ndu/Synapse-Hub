@@ -413,6 +413,10 @@ figure button {
    padding: calc(var(--navGap) / 4) calc(var(--navGap) / 2);
    gap: var(--navGap);
    width: 100%;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
 }
 
 .active label {
