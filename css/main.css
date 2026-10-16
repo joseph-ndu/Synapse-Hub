@@ -169,6 +169,8 @@ main {
    box-shadow: 0 4px 6px -1px var(--primary);
    width: var(--taskCreator_width);
    margin: auto;
+   margin-right: auto;
+   margin-left: auto;
    padding: var(--navGap);
    gap: var(--navGap);
    z-index: 10;
